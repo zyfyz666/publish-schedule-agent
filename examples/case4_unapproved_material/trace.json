@@ -1,0 +1,94 @@
+{
+  "task": {
+    "material_id": "M04",
+    "requested_date": "2026-11-06",
+    "requested_time": "18:00"
+  },
+  "status": "completed",
+  "unfinished_reason": null,
+  "llm": "mock",
+  "max_steps": 10,
+  "steps_used": 3,
+  "final_result": {
+    "material_id": "M04",
+    "requested_slot": {
+      "date": "2026-11-06",
+      "time": "18:00"
+    },
+    "requested_slot_available": null,
+    "review_status": "rule_risk",
+    "risk_reasons": [
+      "素材审核状态为「待审核」，不在允许范围「审核通过」内",
+      "素材时长 120 秒，超过上限 60 秒"
+    ],
+    "suggested_slot": null,
+    "slot_differs_from_request": false,
+    "needs_user_confirmation": true,
+    "pending_confirmations": [
+      "存在规则风险，已阻断自动排期：请修改素材后重审，或由负责人明确确认处理方式"
+    ],
+    "draft_status": "not_saved",
+    "draft_id": null,
+    "publish_status": "not_published_draft_only",
+    "finish_summary": "存在规则风险，已阻断：素材审核状态为「待审核」，不在允许范围「审核通过」内；素材时长 120 秒，超过上限 60 秒"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "get_material",
+      "args": {
+        "material_id": "M04"
+      },
+      "thought": "素材元数据尚未读取，先调用 get_material 确认素材存在且信息完整",
+      "observation": {
+        "ok": true,
+        "material": {
+          "id": "M04",
+          "title": "品牌形象片",
+          "duration_sec": 120,
+          "type": "长视频",
+          "review_status": "待审核",
+          "owner": "赵六",
+          "description": "品牌形象宣传长片，尚未过审"
+        }
+      },
+      "summary": "读取成功：M04《品牌形象片》，120 秒，审核状态「待审核」"
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "args": {
+        "material_id": "M04"
+      },
+      "thought": "素材信息完整，调用 check_rules 检查内容规则风险",
+      "observation": {
+        "ok": true,
+        "material_id": "M04",
+        "passed": false,
+        "violations": [
+          {
+            "rule": "allowed_review_status",
+            "detail": "素材审核状态为「待审核」，不在允许范围「审核通过」内"
+          },
+          {
+            "rule": "max_duration_sec",
+            "detail": "素材时长 120 秒，超过上限 60 秒"
+          }
+        ]
+      },
+      "summary": "发现 2 项违规：素材审核状态为「待审核」，不在允许范围「审核通过」内；素材时长 120 秒，超过上限 60 秒"
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "args": {
+        "summary": "存在规则风险，已阻断：素材审核状态为「待审核」，不在允许范围「审核通过」内；素材时长 120 秒，超过上限 60 秒"
+      },
+      "thought": "规则检查发现风险，阻断自动排期，等待用户处理",
+      "observation": {
+        "summary": "存在规则风险，已阻断：素材审核状态为「待审核」，不在允许范围「审核通过」内；素材时长 120 秒，超过上限 60 秒"
+      },
+      "summary": "存在规则风险，已阻断：素材审核状态为「待审核」，不在允许范围「审核通过」内；素材时长 120 秒，超过上限 60 秒"
+    }
+  ]
+}

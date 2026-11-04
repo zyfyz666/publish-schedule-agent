@@ -1,0 +1,88 @@
+{
+  "task": {
+    "material_id": "M02",
+    "requested_date": "2026-11-06",
+    "requested_time": "18:00"
+  },
+  "status": "completed",
+  "unfinished_reason": null,
+  "llm": "openai-compatible:GLM",
+  "max_steps": 12,
+  "steps_used": 3,
+  "final_result": {
+    "material_id": "M02",
+    "requested_slot": {
+      "date": "2026-11-06",
+      "time": "18:00"
+    },
+    "requested_slot_available": null,
+    "review_status": "missing_info",
+    "risk_reasons": [
+      "素材信息不完整，缺少必填字段: duration_sec"
+    ],
+    "suggested_slot": null,
+    "slot_differs_from_request": false,
+    "needs_user_confirmation": true,
+    "pending_confirmations": [
+      "素材 M02 缺少必填字段（duration_sec），请补充后重新发起排期"
+    ],
+    "draft_status": "not_saved",
+    "draft_id": null,
+    "publish_status": "not_published_draft_only",
+    "finish_summary": "素材M02规则检查未通过（缺少必填字段 duration_sec），存在规则风险，已终止流程，未保存2026-11-06 18:00的排期草稿；待确认项：请素材负责人李四补齐时长字段并复检通过后，再重新发起排期"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "get_material",
+      "args": {
+        "material_id": "M02"
+      },
+      "thought": "任务刚开始，需先读取素材 M02 的元数据以确认其存在及审核状态",
+      "observation": {
+        "ok": true,
+        "material": {
+          "id": "M02",
+          "title": "周末活动推广",
+          "type": "短视频",
+          "review_status": "审核通过",
+          "owner": "李四",
+          "description": "周末大促活动推广视频"
+        }
+      },
+      "summary": "读取成功：M02《周末活动推广》，None 秒，审核状态「审核通过」"
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "args": {
+        "material_id": "M02"
+      },
+      "thought": "素材已获取且显示审核通过，但规则检查结果为空，需先执行规则核验确认无违规项",
+      "observation": {
+        "ok": true,
+        "material_id": "M02",
+        "passed": false,
+        "violations": [
+          {
+            "rule": "required_fields",
+            "detail": "缺少必填字段 duration_sec"
+          }
+        ]
+      },
+      "summary": "发现 1 项违规：缺少必填字段 duration_sec"
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "args": {
+        "summary": "素材M02规则检查未通过（缺少必填字段 duration_sec），存在规则风险，已终止流程，未保存2026-11-06 18:00的排期草稿；待确认项：请素材负责人李四补齐时长字段并复检通过后，再重新发起排期"
+      },
+      "thought": "规则检查结果 passed=false，存在违规项（缺少必填字段 duration_sec），按硬性边界4须终止流程并说明风险，不得继续保存草稿",
+      "observation": {
+        "summary": "素材M02规则检查未通过（缺少必填字段 duration_sec），存在规则风险，已终止流程，未保存2026-11-06 18:00的排期草稿；待确认项：请素材负责人李四补齐时长字段并复检通过后，再重新发起排期"
+      },
+      "summary": "素材M02规则检查未通过（缺少必填字段 duration_sec），存在规则风险，已终止流程，未保存2026-11-06 18:00的排期草稿；待确认项：请素材负责人李四补齐时长字段并复检通过后，再重新发起排期"
+    }
+  ]
+}

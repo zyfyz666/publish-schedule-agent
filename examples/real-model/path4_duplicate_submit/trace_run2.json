@@ -1,0 +1,152 @@
+{
+  "task": {
+    "material_id": "M01",
+    "requested_date": "2026-11-05",
+    "requested_time": "18:00"
+  },
+  "status": "completed",
+  "unfinished_reason": null,
+  "llm": "openai-compatible:GLM",
+  "max_steps": 12,
+  "steps_used": 6,
+  "final_result": {
+    "material_id": "M01",
+    "requested_slot": {
+      "date": "2026-11-05",
+      "time": "18:00"
+    },
+    "requested_slot_available": false,
+    "review_status": "no_risk",
+    "risk_reasons": [],
+    "suggested_slot": {
+      "date": "2026-11-05",
+      "time": "19:00"
+    },
+    "slot_differs_from_request": true,
+    "needs_user_confirmation": true,
+    "pending_confirmations": [
+      "用户要求时段 2026-11-05 18:00 已被素材 M09 占用；建议改用 2026-11-05 19:00，此为替代时段，须经用户确认后才生效（当前仅为草稿）",
+      "重复提交已幂等处理：仅保留原有草稿 D-M01-2026-11-05-1900，未重复创建"
+    ],
+    "draft_status": "duplicate",
+    "draft_id": "D-M01-2026-11-05-1900",
+    "publish_status": "not_published_draft_only",
+    "finish_summary": "素材 M01 审核通过，但 2026-11-05 18:00 时段已被 M09 占用，系统已存在 19:00 替代时段的待确认草稿 D-M01-2026-11-05-1900（本次保存返回 duplicate，仅保留一份未重复创建），需用户确认是否接受 19:00 替代时段。"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "get_material",
+      "args": {
+        "material_id": "M01"
+      },
+      "thought": "任务刚开始，需先读取素材 M01 的元数据以确认其存在及审核状态，再进行规则检查与时段查询。",
+      "observation": {
+        "ok": true,
+        "material": {
+          "id": "M01",
+          "title": "秋季新品预告",
+          "duration_sec": 30,
+          "type": "短视频",
+          "review_status": "审核通过",
+          "owner": "张三",
+          "description": "秋季新品 30 秒预告片，画面已终审"
+        }
+      },
+      "summary": "读取成功：M01《秋季新品预告》，30 秒，审核状态「审核通过」"
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "args": {
+        "material_id": "M01"
+      },
+      "thought": "素材元数据已获取且显示审核通过，但规则检查结果为空，需先执行规则核验确认无违规项后再查询时段。",
+      "observation": {
+        "ok": true,
+        "material_id": "M01",
+        "passed": true,
+        "violations": []
+      },
+      "summary": "规则检查通过，无违规"
+    },
+    {
+      "step": 3,
+      "action": "query_slot",
+      "args": {
+        "date": "2026-11-05",
+        "time": "18:00"
+      },
+      "thought": "素材已通过审核且规则检查无违规，下一步需确认用户要求的 2026-11-05 18:00 时段是否空闲，再决定保存草稿。",
+      "observation": {
+        "ok": true,
+        "date": "2026-11-05",
+        "time": "18:00",
+        "available": false,
+        "occupied_by": {
+          "material_id": "M09",
+          "title": "双11预售直播回放"
+        }
+      },
+      "summary": "时段 2026-11-05 18:00：已被占用（占用者：M09 双11预售直播回放）"
+    },
+    {
+      "step": 4,
+      "action": "query_slot",
+      "args": {
+        "date": "2026-11-05",
+        "time": "19:00"
+      },
+      "thought": "素材已审核通过且规则检查无违规，但 18:00 时段被 M09 占用，按边界需先查询相邻整点时段，先查 19:00 是否空闲",
+      "observation": {
+        "ok": true,
+        "date": "2026-11-05",
+        "time": "19:00",
+        "available": true,
+        "occupied_by": null,
+        "note": null
+      },
+      "summary": "时段 2026-11-05 19:00：可用"
+    },
+    {
+      "step": 5,
+      "action": "save_draft",
+      "args": {
+        "material_id": "M01",
+        "date": "2026-11-05",
+        "time": "19:00",
+        "requested_time": "18:00",
+        "note": "用户原要求 2026-11-05 18:00，该时段已被 M09《双11预售直播回放》占用；相邻 19:00 时段空闲，暂存为替代时段草稿，待用户确认是否接受 19:00 发布"
+      },
+      "thought": "素材已审核通过且规则无违规，但用户要求的 18:00 时段被 M09 占用，相邻 19:00 时段空闲，按规则保存 19:00 替代时段草稿并在 note 中说明待确认原因",
+      "observation": {
+        "ok": true,
+        "status": "duplicate",
+        "draft": {
+          "draft_id": "D-M01-2026-11-05-1900",
+          "material_id": "M01",
+          "date": "2026-11-05",
+          "time": "19:00",
+          "requested_time": "18:00",
+          "status": "pending_confirmation",
+          "note": "用户原要求 2026-11-05 18:00 时段已被素材 M09（双11预售直播回放）占用，已查询相邻 19:00 时段空闲，暂存 19:00 替代时段草稿，待用户确认是否接受该替代时段",
+          "created_at": "2026-11-04T20:30:22"
+        },
+        "message": "素材 M01 对 2026-11-05 18:00 的排期请求已有待确认草稿 D-M01-2026-11-05-1900（保存时段 19:00），未重复创建"
+      },
+      "summary": "保存结果：duplicate，draft_id=D-M01-2026-11-05-1900，素材 M01 对 2026-11-05 18:00 的排期请求已有待确认草稿 D-M01-2026-11-05-1900（保存时段 19:00），未重复创建"
+    },
+    {
+      "step": 6,
+      "action": "finish",
+      "args": {
+        "summary": "素材 M01 审核通过，但 2026-11-05 18:00 时段已被 M09 占用，系统已存在 19:00 替代时段的待确认草稿 D-M01-2026-11-05-1900（本次保存返回 duplicate，仅保留一份未重复创建），需用户确认是否接受 19:00 替代时段。"
+      },
+      "thought": "素材已通过审核，原要求 18:00 时段被 M09 占用，19:00 替代时段草稿已存在且返回 duplicate（仅保留一份，未重复创建），流程完成，待用户确认替代时段。",
+      "observation": {
+        "summary": "素材 M01 审核通过，但 2026-11-05 18:00 时段已被 M09 占用，系统已存在 19:00 替代时段的待确认草稿 D-M01-2026-11-05-1900（本次保存返回 duplicate，仅保留一份未重复创建），需用户确认是否接受 19:00 替代时段。"
+      },
+      "summary": "素材 M01 审核通过，但 2026-11-05 18:00 时段已被 M09 占用，系统已存在 19:00 替代时段的待确认草稿 D-M01-2026-11-05-1900（本次保存返回 duplicate，仅保留一份未重复创建），需用户确认是否接受 19:00 替代时段。"
+    }
+  ]
+}

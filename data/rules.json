@@ -1,0 +1,8 @@
+{
+  "required_fields": ["id", "title", "duration_sec", "type", "review_status", "owner"],
+  "allowed_review_status": ["审核通过"],
+  "forbidden_words": ["全网最低价", "绝对正品", "国家级", "销量第一"],
+  "max_duration_sec": 60,
+  "max_search_alternatives": 3,
+  "latest_publish_hour": 22
+}

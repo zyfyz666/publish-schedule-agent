@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "steps_used": 6,
+  "final_result": {
+    "material_id": "M01",
+    "requested_slot": {
+      "date": "2026-11-05",
+      "time": "18:00"
+    },
+    "requested_slot_available": false,
+    "review_status": "no_risk",
+    "risk_reasons": [],
+    "suggested_slot": {
+      "date": "2026-11-05",
+      "time": "19:00"
+    },
+    "slot_differs_from_request": true,
+    "needs_user_confirmation": true,
+    "pending_confirmations": [
+      "用户要求时段 2026-11-05 18:00 已被素材 M09 占用；建议改用 2026-11-05 19:00，此为替代时段，须经用户确认后才生效（当前仅为草稿）",
+      "重复提交已幂等处理：仅保留原有草稿 D-M01-2026-11-05-1900，未重复创建"
+    ],
+    "draft_status": "duplicate",
+    "draft_id": "D-M01-2026-11-05-1900",
+    "publish_status": "not_published_draft_only",
+    "finish_summary": "重复请求已幂等处理：素材 M01 对 2026-11-05 18:00 的排期请求已有待确认草稿 D-M01-2026-11-05-1900（保存时段 19:00），未重复创建"
+  }
+}

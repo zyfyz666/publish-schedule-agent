@@ -1,0 +1,91 @@
+{
+  "task": {
+    "material_id": "M01",
+    "requested_date": "2026-11-05",
+    "requested_time": "18:00"
+  },
+  "status": "unfinished",
+  "unfinished_reason": "已达到执行步数上限（3 步），流程未完成",
+  "llm": "mock",
+  "max_steps": 3,
+  "steps_used": 3,
+  "final_result": {
+    "material_id": "M01",
+    "requested_slot": {
+      "date": "2026-11-05",
+      "time": "18:00"
+    },
+    "requested_slot_available": false,
+    "review_status": "no_risk",
+    "risk_reasons": [],
+    "suggested_slot": null,
+    "slot_differs_from_request": false,
+    "needs_user_confirmation": true,
+    "pending_confirmations": [
+      "用户要求时段 2026-11-05 18:00 已被占用，且未找到可自动推荐的空闲时段，需人工确定时段",
+      "流程未完成（已达到执行步数上限（3 步），流程未完成），结果不完整，需人工处理"
+    ],
+    "draft_status": "not_saved",
+    "draft_id": null,
+    "publish_status": "not_published_draft_only",
+    "finish_summary": null
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "get_material",
+      "args": {
+        "material_id": "M01"
+      },
+      "thought": "素材元数据尚未读取，先调用 get_material 确认素材存在且信息完整",
+      "observation": {
+        "ok": true,
+        "material": {
+          "id": "M01",
+          "title": "秋季新品预告",
+          "duration_sec": 30,
+          "type": "短视频",
+          "review_status": "审核通过",
+          "owner": "张三",
+          "description": "秋季新品 30 秒预告片，画面已终审"
+        }
+      },
+      "summary": "读取成功：M01《秋季新品预告》，30 秒，审核状态「审核通过」"
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "args": {
+        "material_id": "M01"
+      },
+      "thought": "素材信息完整，调用 check_rules 检查内容规则风险",
+      "observation": {
+        "ok": true,
+        "material_id": "M01",
+        "passed": true,
+        "violations": []
+      },
+      "summary": "规则检查通过，无违规"
+    },
+    {
+      "step": 3,
+      "action": "query_slot",
+      "args": {
+        "date": "2026-11-05",
+        "time": "18:00"
+      },
+      "thought": "规则无风险，先查询用户要求的时段 2026-11-05 18:00 是否可用",
+      "observation": {
+        "ok": true,
+        "date": "2026-11-05",
+        "time": "18:00",
+        "available": false,
+        "occupied_by": {
+          "material_id": "M09",
+          "title": "双11预售直播回放"
+        }
+      },
+      "summary": "时段 2026-11-05 18:00：已被占用（占用者：M09 双11预售直播回放）"
+    }
+  ]
+}

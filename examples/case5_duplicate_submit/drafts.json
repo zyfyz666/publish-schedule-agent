@@ -1,0 +1,14 @@
+{
+  "drafts": [
+    {
+      "draft_id": "D-M01-2026-11-05-1900",
+      "material_id": "M01",
+      "date": "2026-11-05",
+      "time": "19:00",
+      "requested_time": "18:00",
+      "status": "pending_confirmation",
+      "note": "原要求时段 18:00 已被占用，建议改用 19:00，待用户确认",
+      "created_at": "2026-11-04T20:29:13"
+    }
+  ]
+}

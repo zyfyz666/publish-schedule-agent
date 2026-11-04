@@ -1,0 +1,25 @@
+{
+  "status": "unfinished",
+  "steps_used": 3,
+  "final_result": {
+    "material_id": "M01",
+    "requested_slot": {
+      "date": "2026-11-05",
+      "time": "18:00"
+    },
+    "requested_slot_available": false,
+    "review_status": "no_risk",
+    "risk_reasons": [],
+    "suggested_slot": null,
+    "slot_differs_from_request": false,
+    "needs_user_confirmation": true,
+    "pending_confirmations": [
+      "用户要求时段 2026-11-05 18:00 已被占用，且未找到可自动推荐的空闲时段，需人工确定时段",
+      "流程未完成（已达到执行步数上限（3 步），流程未完成），结果不完整，需人工处理"
+    ],
+    "draft_status": "not_saved",
+    "draft_id": null,
+    "publish_status": "not_published_draft_only",
+    "finish_summary": null
+  }
+}

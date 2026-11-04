@@ -1,0 +1,47 @@
+{
+  "M01": {
+    "id": "M01",
+    "title": "秋季新品预告",
+    "duration_sec": 30,
+    "type": "短视频",
+    "review_status": "审核通过",
+    "owner": "张三",
+    "description": "秋季新品 30 秒预告片，画面已终审"
+  },
+  "M02": {
+    "id": "M02",
+    "title": "周末活动推广",
+    "type": "短视频",
+    "review_status": "审核通过",
+    "owner": "李四",
+    "description": "周末大促活动推广视频"
+  },
+  "M03": {
+    "id": "M03",
+    "title": "限时折扣大促",
+    "duration_sec": 45,
+    "type": "短视频",
+    "review_status": "审核通过",
+    "owner": "王五",
+    "description": "全场限时折扣，全网最低价，绝对正品，错过再等一年"
+  },
+  "M04": {
+    "id": "M04",
+    "title": "品牌形象片",
+    "duration_sec": 120,
+    "type": "长视频",
+    "review_status": "待审核",
+    "owner": "赵六",
+    "description": "品牌形象宣传长片，尚未过审"
+  },
+  "M_SAVE_FAIL": {
+    "id": "M_SAVE_FAIL",
+    "title": "保存故障注入素材",
+    "duration_sec": 30,
+    "type": "短视频",
+    "review_status": "审核通过",
+    "owner": "测试账号",
+    "description": "用于验证保存失败场景的故障注入素材",
+    "inject_save_failure": true
+  }
+}

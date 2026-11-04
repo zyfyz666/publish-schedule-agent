@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "steps_used": 5,
+  "final_result": {
+    "material_id": "M_SAVE_FAIL",
+    "requested_slot": {
+      "date": "2026-11-05",
+      "time": "12:00"
+    },
+    "requested_slot_available": true,
+    "review_status": "no_risk",
+    "risk_reasons": [],
+    "suggested_slot": {
+      "date": "2026-11-05",
+      "time": "12:00"
+    },
+    "slot_differs_from_request": false,
+    "needs_user_confirmation": true,
+    "pending_confirmations": [
+      "草稿保存失败（草稿保存失败：存储写入故障（模拟故障注入）），未生成有效排期，需人工处理后重试"
+    ],
+    "draft_status": "failed",
+    "draft_id": null,
+    "publish_status": "not_published_draft_only",
+    "finish_summary": "草稿保存失败：草稿保存失败：存储写入故障（模拟故障注入），需人工处理后重试"
+  }
+}
