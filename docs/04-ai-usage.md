@@ -32,8 +32,8 @@
 ## 提交记录与用时
 
 - 总用时：约 1.01 小时（含需求分析、设计、实现、测试、文档）
-- 提交仓库：<填写你的 GitHub 仓库 URL>
-- 关键 commit：<填写 commit SHA>
+- 提交仓库：https://github.com/zyfyz666/publish-schedule-agent
+- 最终 commit SHA：以答题提交时填写的 SHA 为准（本仓库 main 分支最新提交）
 
 ## 真实模型调用说明
 
